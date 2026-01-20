@@ -1,0 +1,27 @@
+USUARIO:
+
+numero de matricula
+nome
+contato email e tel
+curso
+
+EMPRESTIMO:
+
+dados do usuário
+numero do exemplar
+
+OBRA:
+
+numero de classificação
+autores
+cutter
+titulo
+palavras chave
+
+EXEMPLAR:
+
+dados da obra
+unidade de informação
+situação(disponível/excluído)
+compra/doação
+valor e data aquisição
