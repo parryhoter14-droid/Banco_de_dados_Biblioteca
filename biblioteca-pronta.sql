@@ -106,6 +106,12 @@ values ('05-01-2026', '06-03-2026', 'Programador Back-End'),
 		('09-02-2026', '10-07-2027', 'Técnica em Mecânica'),
 		('09-02-2026', '10-07-2027', 'Técnico em Segurança do Trabalho');
 
+insert into obra(titulo, autor, editora, ano_publicacao, isbn, categoria, cutter)
+values('Harry Potter e a Câmara Secreta','J.K Rowling', 'Rocco', '2000', '6555320265', 'Fantasia', 'R884'),
+('Harry Potter e a Pedra Filosofal','J.K Rowling', 'Rocco', '2002', '8532530788', 'Fantasia', 'R884'),
+('Harry Potter e a Ordem da Fênix','J.K Rowling', 'Rocco', '2020', '8532531806', 'Fantasia', 'R884'),
+('Harry Potter e o Prisioneiro de Azkaban','J.K Rowling', 'Rocco', '2017', '853253080X', 'Fantasia', 'R884');
+
 insert into exemplar (codigo_exemplar,localizacao,status,id_obra)
 values ('', '', true, 1),
 ('', '', true, 2),
@@ -142,11 +148,6 @@ values  ('02/01/2026, 9:30 ',1 ,5 ,'liberado ', 1),
 		('14/01/2026, 13:19',2 ,3 ,'liberado ',1 ),
 		('19/01/2026, 8:54',5 ,4 ,'aguardando ',2 );
 
-insert into obra(titulo, autor, editora, ano_publicacao, isbn, categoria, cutter)
-values('Harry Potter e a Câmara Secreta','J.K Rowling', 'Rocco', '2000', '6555320265', 'Fantasia', 'R884'),
-('Harry Potter e a Pedra Filosofal','J.K Rowling', 'Rocco', '2002', '8532530788', 'Fantasia', 'R884'),
-('Harry Potter e a Ordem da Fênix','J.K Rowling', 'Rocco', '2020', '8532531806', 'Fantasia', 'R884'),
-('Harry Potter e o Prisioneiro de Azkaban','J.K Rowling', 'Rocco', '2017', '853253080X', 'Fantasia', 'R884');
 
 insert into palavra_chave(descricao)
 values('Fantasia'),
