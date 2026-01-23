@@ -1,15 +1,31 @@
 1- Como o sistema registra e diferencia exemplares de uma mesma obra?
-Ele registra o código de cada exemplar baseado no código da obra, puxando os dados da mesma.
+Ele registra com o "insert". Para diferenciar, deve-se fazer um view de toda a tabela "exemplar" e poder filtrar pelo id da obra.
+
+create view exemplares_obra as
+select
+	*
+from
+	exemplar ex
+where 
+	ex.id_obra = :idobra;
 
 
 2- É possível visualizar a lista completa de empréstimos ativos, com data de devolução prevista e usuário?
 Sim, pois haverá a coleta das datas de empréstimo e devolução, o id do usuario, que traz todos os dados referentes a ele
-e o status relativo ao empréstimo.
+e o status relativo ao empréstimo, sendo necessário apenas fazer um view da tabela "emprestimo".
 
+create view emprestimos_ativos as
+select
+	*
+from
+	emprestimo em
+where 
+	em.status = :status;
 
 3- O sistema gera fila de espera automática quando todos os exemplares que estão emprestados?
 Sim, porque só há a liberação de empréstimo quando houverem exemplares disponíveis e caso não haja, há a geracao 
 de fila automática de espera.
+
 
 
 4- Como é feita a gestão de reservas e qual a regra de prioridade?
@@ -20,6 +36,18 @@ dessa forma, criando uma fila de prioridade para a reserva.
 5- É possível identificar exemplares em atraso e seus respectivos usuários?
 Sim, no sistema fica identificado, para cada exemplar que esteja emprestado, o status e em qual momento se enquadra(status/atraso/disponivel/estado do livro).
 
+select
+	em.data_devolucao,
+	o.titulo,
+	u.nome
+from
+	exemplar ex
+inner join emprestimo em on
+	ex.id_exemplar = em.id_exemplar
+inner join obra o on
+	o.id_obra = ex.id_obra
+inner join usuario u on
+	u.id = em.id_usuario;
 
 6- O sistema gera estatísticas de empréstimo por obra, autor ou categoria?
 Sim, dentro do sistema será incluído os dados de cada empréstimo, onde poderá ser gerado o relatório através de uma view sobre a obra e seus dados essenciais.
