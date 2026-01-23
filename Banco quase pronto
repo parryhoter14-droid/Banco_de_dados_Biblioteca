@@ -142,3 +142,14 @@ values('Fantasia'),
 ('Juvenil'),
 ('Ficção Científica Fantasia');
 
+insert into emprestimo (data_emprestimo, data_devolucao, id_usuario, id_exemplar, status)
+values  ('02/01/2026','02/01/2026',1 ,4 ,'Disponível'),
+		('02/01/2026','02/01/2026',2 ,3 ,'Disponível'),
+		('06/01/2026','02/01/2026',3 ,1 ,'Disponível'),
+		('07/01/2026','02/01/2026',3 ,2 , 'Emprestado'),
+		('07/01/2026','02/01/2026',4 ,1 , 'Disponível'),
+		('09/01/2026','02/01/2026',5 ,3 ,'Disponível'),
+		('12/01/2026','02/01/2026',4 ,3 , 'Emprestado'),
+		('14/01/2026','02/01/2026',10 ,3 ,'Disponível'),
+		('14/01/2026','02/01/2026', 8 ,1 ,'Disponível'),
+		('19/01/2026','02/01/2026',9 ,1 ,'Emprestado');
