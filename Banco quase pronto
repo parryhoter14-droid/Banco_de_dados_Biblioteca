@@ -1,0 +1,84 @@
+create database Biblioteca
+
+create table reserva (
+id serial primary key,
+data_reserva timestamp,
+id_usuario int,
+id_exemplar int,
+status varchar(15),--
+posicao int); --posicao da fila
+
+create table emprestimo(
+	id_emprestimo serial primary key,
+	data_emprestimo date,
+	data_devolucao date,
+	id_usuario int,
+	id_exemplar int,
+	status varchar(20)
+);
+
+alter table emprestimo add foreign key
+(id_usuario) references usuario(id);
+
+
+alter table emprestimo add foreign key
+(id_exemplar) references exemplar(id);
+
+
+create table usuario(
+	id serial primary key,
+	nome varchar (150),
+	cpf int8,
+	matricula varchar (8),
+	email varchar (50),
+	telefone char (14),
+	login varchar (20),
+	senha varchar (100),
+	perfil varchar (15),
+	status boolean,
+	data_cadastro date,
+	id_curso int
+);
+
+create table exemplar (
+  id_exemplar serial primary key,
+  codigo_exemplar varchar(100), 
+  localizacao varchar(100),
+  status boolean,
+  id_obra int);
+
+insert into exemplar (codigo_exemplar,localizacao,status,id_obra)
+values ('', '', true, 1),
+('', '', true, 2),
+('', '', false, 3),
+('', '', false, 4),
+('', '', true, 5),
+('', '', false, 6),
+('', '', true, 7),
+('', '', false, 8),
+('', '', true, 9),
+('', '', false, 1);
+
+insert into usuario (nome, cpf, matricula, email, telefone, login, senha, perfil, status, data_cadastro, id_curso)
+value ('João Pedro', 12345678901, '12345601', 'joaopedro@123.com', '(24)912345601', 'login', 'senha', 'adm', true, 'data_cadastro', id_curso),
+('Taiane', 12345678902, '12345602', 'taiane@123.com', '(24)912345602', 'login', 'senha', 'perfil', false, 'data_cadastro', id_curso),
+('Vinicius', 12345678903, '12345603', 'vinicius@123.com', '(24)912345603', 'login', 'senha', 'perfil', true, 'data_cadastro', id_curso),
+('Arthur', 12345678904, '12345604', 'arthur@123.com', '(24)912345604', 'login', 'senha', 'perfil', false, 'data_cadastro', id_curso),
+('Julio', 12345678905, '12345605', 'julio@123.com', '(24)912345605', 'login', 'senha', 'perfil', true, 'data_cadastro', id_curso),
+('Willian', 12345678906, '12345606', 'willian@123.com', '(24)912345606', 'login', 'senha', 'perfil', false, 'data_cadastro', id_curso),
+('Carlos', 12345678907, '12345607', 'carlos@123.com', '(24)912345607', 'login', 'senha', 'perfil', true, 'data_cadastro', id_curso),
+('Debora', 12345678908, '12345608', 'debora@123.com', '(24)912345608', 'login', 'senha', 'perfil', false, 'data_cadastro', id_curso),
+('Luan', 1234567890, '12345609', 'luan@123.com', '(24)912345609', 'login', 'senha', 'perfil', true, 'data_cadastro', id_curso),
+('Carolina', 12345678910, '12345610', 'carolina@123.com', '(24)912345610', 'login', 'senha', 'perfil', false, 'data_cadastro', id_curso);
+
+insert into reserva (data_reserva, id_usuario, id_exemplar, status, posicao)
+values  ('02/01/2026, 9:30 ',1 ,5 ,'disponivel', 1),
+		('02/01/2026, 13:03',1 ,8 ,'bloqueado ',null ),
+		('06/01/2026, 10:32',4 ,2 ,'aguardando ',1 ),
+		('07/01/2026, 14:01',3 ,2 , 'aguardando ',2 ),
+		('07/01/2026, 16:10', , , ' ', ),
+		('', , , ' ', ),
+		('', , , ' ', ),
+		('', , , ' ', ),
+		('', , , ' ', ),
+		('', , , ' ', );
